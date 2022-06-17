@@ -1,22 +1,23 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-backend
-  namespace: default
+  name: hello-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app:hello-backend
+      app: hello-backend
   template:
     metadata:
       labels:
         app: hello-backend
     spec:
       containers:
-        - name: hello-backend
-          image: public.ecr.aws/y7c9e1d2/joozero-repo:latest
-          imagePullPolicy: Always
+        - name: eks
+          image: AWS_ECR_URI
           ports:
-            - containerPort: 8080 
+            - containerPort: 8080
+          imagePullPolicy: Always
+          env:
+            - name: DATE
+              value: 'DATE_STRING'
