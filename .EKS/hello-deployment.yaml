@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-backend
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app:hello-backend
+  template:
+    metadata:
+      labels:
+        app: hello-backend
+    spec:
+      containers:
+        - name: hello-backend
+          image: public.ecr.aws/y7c9e1d2/joozero-repo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080 
