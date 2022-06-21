@@ -29,7 +29,7 @@ phases:
       - AWS_ECR_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - DATE='date'
       - echo Build completed on $DATE
-      - sed -i.bak 's#AWS_ECR_URI#'"$AWS_ECR_URI"'#' ./EKS/hello-deployment.yaml
-      - sed -i.bak 's#DATE_STRING#'"$DATE"'#' ./EKS/hello-deployment.yaml
-      - kubectl apply -f ./EKS/hello-deployment.yml
-      - kubectl apply -f ./EKS/hello-service.yml
+      - sed -i.bak 's#AWS_ECR_URI#'"$AWS_ECR_URI"'#' ./.EKS/hello-deployment.yaml
+      - sed -i.bak 's#DATE_STRING#'"$DATE"'#' ./.EKS/hello-deployment.yaml
+      - kubectl apply -f ./.EKS/hello-deployment.yaml
+      - kubectl apply -f ./.EKS/hello-service.yaml
