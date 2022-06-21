@@ -9,8 +9,8 @@ COPY ./src ./src
 # compile the source code and package it in a jar file
 RUN mvn clean install -Dmaven.test.skip=true
 #ARG JAR_FILE=target/*.jar
-WORKDIR /tmp
-COPY target/*.jar application.jar
+# WORKDIR /tmp
+COPY target/hello-world-1.0.1-SNAPSHOT.jar application.jar
 
 RUN java -Djarmode=layertools -jar application.jar extract
 
