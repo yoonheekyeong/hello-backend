@@ -9,7 +9,7 @@ COPY ./src ./src
 # compile the source code and package it in a jar file
 RUN mvn clean install -Dmaven.test.skip=true
 #ARG JAR_FILE=target/*.jar
-COPY --from=builder target/*.jar application.jar
+COPY ["/tmp/target/*.jar", "application.jar"]
 
 RUN java -Djarmode=layertools -jar application.jar extract
 
